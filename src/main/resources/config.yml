@@ -1,0 +1,20 @@
+webhooks:
+# add your discord webhook link here
+
+logged-events:
+  - player-command-execution
+  - console-command-execution
+  - player-join
+  - player-disconnect
+  - player-kick
+  - player-death
+  - player-respawn
+
+messages:
+  player-command: Player **%s** executed the command `%s`
+  console-command: CONSOLE executed the command `%s`
+  player-join: Player **%s** joined the server!
+  player-disconnect: Player **%s** disconnected from the server.
+  player-kick: Player **%s** was kicked from the server!
+  player-death: Player **%s** died!
+  player-respawn: Player **%s** respawned.

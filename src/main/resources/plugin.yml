@@ -1,0 +1,8 @@
+name: DiscordLog
+version: '${project.version}'
+main: com.github.thefloatingpixel.discordlog.DiscordLog
+api-version: 1.16
+authors: [ TheFloatingPixel ]
+commands:
+  discordlog:
+    usage: /discordlog ( info | reload-config | test-webhooks )
