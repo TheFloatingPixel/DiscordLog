@@ -64,6 +64,10 @@ A list of all the events to log. Accepted list elements are
  - `player-kill-entity`
  - `player-kill-named-entity`
 
+> **Warning**
+> 
+> If both `player-kill-entity` and `player-kill-named-entity` are on the list, when a named mob dies **both** events will be logged!
+
 **Example:**
 ```yml
   logged-events:
