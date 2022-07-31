@@ -58,6 +58,8 @@ A list of all the events to log. Accepted list elements are
  - `player-kick`
  - `player-death`
  - `player-respawn`
+ - `player-kill-entity`
+ - `player-kill-named-entity`
 
 **Example:**
 ```yml
@@ -69,6 +71,8 @@ A list of all the events to log. Accepted list elements are
 # - player-kick  This line is commented out, so the plugin will not log players being kicked from the server
   - player-death
   - player-respawn
+  - player-kill-entity
+  - player-kill-named-entity
 ```
 
 
@@ -88,16 +92,22 @@ A section containing all the log message formats (they can contain discord markd
 
  - `player-respawn` - connected to `player-respawn` event. `%s` represents the player.
 
+ - `player-kill-entity` - connected to `player-kill-entity` event. First `%s` represents the player, second - the entity type.
+ 
+ - `player-kill-named-entity` - connected to `player-kill-named-entity` event. First `%s` represents the player, second - the entity type, and third - the entity name
+
 **Example:**
 ```yml
   messages:
-    player-command: Player **%s** executed the command `%s`
-    console-command: CONSOLE executed the command `%s`
-    player-join: Player **%s** joined the server!
-    player-disconnect: Player **%s** disconnected from the server.
-    player-kick: Player **%s** was kicked from the server!
-    player-death: Player **%s** died!
-    player-respawn: Player **%s** respawned.
+     player-command: Player **%s** executed the command `%s`
+     console-command: CONSOLE executed the command `%s`
+     player-join: Player **%s** joined the server!
+     player-disconnect: Player **%s** disconnected from the server.
+     player-kick: Player **%s** was kicked from the server!
+     player-death: Player **%s** died!
+     player-respawn: Player **%s** respawned.
+     player-kill-entity: Player **%s** killed entity of type **%s**
+     player-kill-named-entity: Player **%s** killed entity of type **%s**, named **%s**
 ```
 
 ## Commands
