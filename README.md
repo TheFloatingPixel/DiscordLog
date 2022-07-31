@@ -1,6 +1,9 @@
 # DiscordLog
 Spigot plugin allowing for logging various in-game events to a discord channel.
 
+**TODO:**
+[ ] Change template system to allow for different order and missing arguments
+
 ## Setup
 
 1. Download plugin and add it into the plugins folder
