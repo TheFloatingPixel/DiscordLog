@@ -45,7 +45,8 @@ public class DiscordLogCommand implements CommandExecutor {
                 }
                 break;
             case "info":
-                sender.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "DiscordLog v.1.0" + ChatColor.RESET +
+                sender.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD +
+                        "DiscordLog v" + plugin.getDescription().getVersion() + ChatColor.RESET +
                         ChatColor.DARK_GREEN + " >" +ChatColor.GREEN+ " by TheFloatingPixel" +
                         ChatColor.DARK_GREEN + " >" +ChatColor.GREEN+ " Github (https://github.com/TheFloatingPixel/DiscordLog)");
                 break;
