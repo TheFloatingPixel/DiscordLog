@@ -9,6 +9,8 @@ logged-events:
   - player-kick
   - player-death
   - player-respawn
+  - player-kill-entity
+  - player-kill-named-entity
 
 messages:
   player-command: Player **%s** executed the command `%s`
@@ -18,3 +20,5 @@ messages:
   player-kick: Player **%s** was kicked from the server!
   player-death: Player **%s** died!
   player-respawn: Player **%s** respawned.
+  player-kill-entity: Player **%s** killed entity of type **%s**
+  player-kill-named-entity: Player **%s** killed entity of type **%s**, named **%s**

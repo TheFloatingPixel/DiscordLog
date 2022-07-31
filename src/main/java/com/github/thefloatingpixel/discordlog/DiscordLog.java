@@ -11,6 +11,7 @@ public final class DiscordLog extends JavaPlugin {
     PlayerCommandLogger playerCommandLogger;
     PlayerJoinLeaveLogger playerJoinLeaveLogger;
     PlayerDeathRespawnLogger playerDeathRespawnLogger;
+    PlayerKillEntityLogger playerKillEntityLogger;
 
     @Override
     public void onEnable() {
@@ -27,6 +28,9 @@ public final class DiscordLog extends JavaPlugin {
 
         playerDeathRespawnLogger = new PlayerDeathRespawnLogger(this);
         getServer().getPluginManager().registerEvents(playerDeathRespawnLogger, this);
+
+        playerKillEntityLogger = new PlayerKillEntityLogger(this);
+        getServer().getPluginManager().registerEvents(playerKillEntityLogger, this);
 
         this.getCommand("discordlog").setExecutor(new DiscordLogCommand(this));
         this.getCommand("discordlog").setTabCompleter(new DiscordLogTabCompleter());
