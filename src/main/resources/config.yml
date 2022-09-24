@@ -12,13 +12,15 @@ logged-events:
   - player-kill-entity
   - player-kill-named-entity
 
+# Backtick characters (`) have to be escaped using a double backtick (``)
+# A single backtick can be used to escape an embedded argument, eg. `#{command}
 messages:
-  player-command: Player **%s** executed the command `%s`
-  console-command: CONSOLE executed the command `%s`
-  player-join: Player **%s** joined the server!
-  player-disconnect: Player **%s** disconnected from the server.
-  player-kick: Player **%s** was kicked from the server!
-  player-death: Player **%s** died!
-  player-respawn: Player **%s** respawned.
-  player-kill-entity: Player **%s** killed entity of type **%s**
-  player-kill-named-entity: Player **%s** killed entity of type **%s**, named **%s**
+  player-command: "Player **#{player}** executed the command ``#{command}``"
+  console-command: "CONSOLE executed the command ``#{command}``"
+  player-join: "Player **#{player}** joined the server!"
+  player-disconnect: "Player **#{player}** disconnected from the server."
+  player-kick: "Player **#{player}** was kicked from the server!"
+  player-death: "Player **#{player}** died!"
+  player-respawn: "Player **#{player}** respawned."
+  player-kill-entity: "Player **#{player}** killed entity of type **#{type}**"
+  player-kill-named-entity: "Player **#{player}** killed entity of type **#{type}**, named **#{name}**"

@@ -70,5 +70,10 @@
             <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>net.andreinc</groupId>
+            <artifactId>aleph</artifactId>
+            <version>0.1.1</version>
+        </dependency>
     </dependencies>
 </project>

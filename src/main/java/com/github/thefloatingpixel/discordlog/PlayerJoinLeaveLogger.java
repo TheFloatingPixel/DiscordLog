@@ -8,6 +8,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.Plugin;
+import static net.andreinc.aleph.AlephFormatter.str;
 
 public class PlayerJoinLeaveLogger implements Listener {
 
@@ -23,7 +24,10 @@ public class PlayerJoinLeaveLogger implements Listener {
             return;
         }
 
-        log(String.format(p.getConfig().getString("messages.player-join"), e.getPlayer().getDisplayName()));
+        var text = str(p.getConfig().getString("messages.player-join"))
+                .arg("player", e.getPlayer().getDisplayName())
+                .fmt();
+        log(text);
     }
 
     @EventHandler
@@ -32,7 +36,10 @@ public class PlayerJoinLeaveLogger implements Listener {
             return;
         }
 
-        log(String.format(p.getConfig().getString("messages.player-disconnect"), e.getPlayer().getDisplayName()));
+        var text = str(p.getConfig().getString("messages.player-disconnect"))
+                .arg("player", e.getPlayer().getDisplayName())
+                .fmt();
+        log(text);
     }
 
     @EventHandler
@@ -41,7 +48,10 @@ public class PlayerJoinLeaveLogger implements Listener {
             return;
         }
 
-        log(String.format(p.getConfig().getString("messages.player-kick"), e.getPlayer().getDisplayName()));
+        var text = str(p.getConfig().getString("messages.player-kick"))
+                .arg("player", e.getPlayer().getDisplayName())
+                .fmt();
+        log(text);
     }
 
     private void log(String message) {

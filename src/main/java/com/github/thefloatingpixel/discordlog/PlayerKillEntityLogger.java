@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.plugin.Plugin;
+import static net.andreinc.aleph.AlephFormatter.str;
 
 public class PlayerKillEntityLogger implements Listener {
 
@@ -20,7 +21,7 @@ public class PlayerKillEntityLogger implements Listener {
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
         var entity = event.getEntity();
-        if (event.getEntity().getKiller() instanceof Player) {
+        if (event.getEntity().getKiller() != null) {
             var p = event.getEntity().getKiller();
             onPlayerKillEntity(p, entity);
             if (entity.getCustomName() != null) {
@@ -36,7 +37,12 @@ public class PlayerKillEntityLogger implements Listener {
 
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             for (String url : plugin.getConfig().getStringList("webhooks")) {
-                DiscordWebhookUtils.sendMessage(url, String.format(plugin.getConfig().getString("messages.player-kill-entity"), p.getDisplayName(), e.getType()));
+                var text = str(plugin.getConfig().getString("messages.player-kill-entity"))
+                        .arg("player", p.getDisplayName())
+                        .arg("type", e.getType())
+                        .fmt();
+
+                DiscordWebhookUtils.sendMessage(url, text);
             }
         });
     }
@@ -48,7 +54,13 @@ public class PlayerKillEntityLogger implements Listener {
 
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             for (String url : plugin.getConfig().getStringList("webhooks")) {
-                DiscordWebhookUtils.sendMessage(url, String.format(plugin.getConfig().getString("messages.player-kill-named-entity"), p.getDisplayName(), e.getType(), e.getCustomName()));
+                var text = str(plugin.getConfig().getString("messages.player-kill-named-entity"))
+                        .arg("player", p.getDisplayName())
+                        .arg("name", e.getCustomName())
+                        .arg("type", e.getType())
+                        .fmt();
+
+                DiscordWebhookUtils.sendMessage(url, text);
             }
         });
     }

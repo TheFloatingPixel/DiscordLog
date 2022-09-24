@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.Plugin;
+import static net.andreinc.aleph.AlephFormatter.str;
 
 public class PlayerDeathRespawnLogger implements Listener {
 
@@ -22,7 +23,10 @@ public class PlayerDeathRespawnLogger implements Listener {
 
         Bukkit.getScheduler().runTaskAsynchronously(p, () -> {
            for (String url : p.getConfig().getStringList("webhooks")) {
-               DiscordWebhookUtils.sendMessage(url, String.format(p.getConfig().getString("messages.player-death"), event.getEntity().getDisplayName()));
+               var text = str(p.getConfig().getString("messages.player-death"))
+                       .arg("player", event.getEntity().getDisplayName())
+                       .fmt();
+               DiscordWebhookUtils.sendMessage(url, text);
            }
         });
     }
@@ -33,7 +37,10 @@ public class PlayerDeathRespawnLogger implements Listener {
 
         Bukkit.getScheduler().runTaskAsynchronously(p, () -> {
             for (String url : p.getConfig().getStringList("webhooks")) {
-                DiscordWebhookUtils.sendMessage(url, String.format(p.getConfig().getString("messages.player-respawn"), event.getPlayer().getDisplayName()));
+                var text = str(p.getConfig().getString("messages.player-respawn"))
+                        .arg("player", event.getPlayer().getDisplayName())
+                        .fmt();
+                DiscordWebhookUtils.sendMessage(url, text);
             }
         });
     }

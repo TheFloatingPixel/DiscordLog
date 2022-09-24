@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.server.ServerCommandEvent;
 import org.bukkit.plugin.Plugin;
+import static net.andreinc.aleph.AlephFormatter.str;
 
 public class ConsoleCommandLogger implements Listener {
 
@@ -19,7 +20,7 @@ public class ConsoleCommandLogger implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerCommand(ServerCommandEvent event) {
+    public void onServerCommand(ServerCommandEvent event) {
         var config = plugin.getConfig();
         var loggedEvents = config.getStringList("logged-events");
         if (!loggedEvents.contains("console-command-execution") && !loggedEvents.contains("command-execution")) {
@@ -29,13 +30,11 @@ public class ConsoleCommandLogger implements Listener {
 
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             for (String url : plugin.getConfig().getStringList("webhooks")) {
-                var format = config.getString("messages.console-command");
-                assert format != null;
-                var text = String.format(format, event.getCommand());
-                var msg = DiscordWebhookUtils.sendMessage(url, text);
-                if (!msg) {
-                    plugin.getLogger().warning("Sending discord message failed!");
-                }
+                var text = str(plugin.getConfig().getString("messages.console-command"))
+                        .arg("command", event.getCommand())
+                        .fmt();
+
+                DiscordWebhookUtils.sendMessage(url, text);
             }
         });
     }

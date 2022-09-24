@@ -1,14 +1,14 @@
 package com.github.thefloatingpixel.discordlog;
 
 import com.github.thefloatingpixel.discordlog.util.DiscordWebhookUtils;
+import net.andreinc.aleph.AlephFormatter;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.event.server.ServerCommandEvent;
 import org.bukkit.plugin.Plugin;
+import static net.andreinc.aleph.AlephFormatter.str;
 
 public class PlayerCommandLogger implements Listener {
 
@@ -29,9 +29,10 @@ public class PlayerCommandLogger implements Listener {
 
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
            for (String url : plugin.getConfig().getStringList("webhooks")) {
-               var format = config.getString("messages.player-command");
-               assert format != null;
-               var text = String.format(format, event.getPlayer().getDisplayName(), event.getMessage());
+               var text = str(config.getString("messages.player-command"))
+                       .arg("player", event.getPlayer().getDisplayName())
+                       .arg("command", event.getMessage())
+                       .fmt();
                var msg = DiscordWebhookUtils.sendMessage(url, text);
                if (!msg) {
                     plugin.getLogger().warning("Sending discord message failed!");
