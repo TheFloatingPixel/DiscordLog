@@ -6,7 +6,7 @@
 
 Spigot plugin allowing for logging various in-game events to a discord channel. Log anything, ranging from players joining to admins executing commands!
 
-### Why should i use this plugin?
+### Why should I use this plugin?
 - To make sure admins don't abuse their power (by logging all executed commands to a public channel)
 - To publicly shame anyone that kills your pet (by logging all named entity deaths to a public channel)
 
