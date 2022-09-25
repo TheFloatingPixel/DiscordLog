@@ -18,3 +18,7 @@ Spigot plugin allowing for logging various in-game events to a discord channel. 
 - [X] Change template system to allow for different order and missing arguments
 - [ ] Add override system for overriding messages when certain conditions are met
 
+------
+
+| [Documentation for v.0.1.0 (OUTDATED)](https://github.com/TheFloatingPixel/DiscordLog/wiki/v0.1.0-Documentation) |
+|-|
