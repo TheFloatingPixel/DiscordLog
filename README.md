@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/110129491/192145819-4ce8be71-1b28-404b-8217-a192fd93c93c.png" width=50%>
+<img src="https://user-images.githubusercontent.com/110129491/192145819-4ce8be71-1b28-404b-8217-a192fd93c93c.png" width=60%>
 
 # DiscordLog
 | [Setup](https://github.com/TheFloatingPixel/DiscordLog/wiki/Setup) | [Documentation](https://github.com/TheFloatingPixel/DiscordLog/wiki) | [PMC Page](https://www.planetminecraft.com/mod/discordlog/)
